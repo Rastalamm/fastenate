@@ -1,5 +1,54 @@
-body {
+//Variables
 
-    background-color: blue;
+$light: #ffffff;
+$dark: #3a3a3a;
+$nav-font: #818285;
+$plus: #b74326;
+$plus-square: #f47949;
 
+body{
+  margin: 0;
+}
+
+h1{
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+
+.header{
+  background-color: $light;
+  height: 65px;
+}
+
+.logo-pic{
+  background-image: url('../assets/header_bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.add-article{
+  position: absolute;
+  top: 15px;
+  right: 21px;
+  border: 1px solid $plus-square;
+  color: $plus;
+  font-size: 35px;
+  padding: 0 1%;
+}
+
+.nav{
+  background-color: $dark;
+}
+
+.main-content{
+  background-image: url('../assets/bg.jpg');
+}
+
+.footer{
+  background-color: $dark;
 }

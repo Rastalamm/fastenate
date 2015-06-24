@@ -1,2 +1,37 @@
 body {
-  background-color: blue; }
+  margin: 0; }
+
+h1 {
+  -webkit-margin-before: 0px;
+  -webkit-margin-after: 0px;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px; }
+
+.header {
+  background-color: #ffffff;
+  height: 65px; }
+
+.logo-pic {
+  background-image: url('../assets/header_bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin-top: 14px; }
+
+.add-article {
+  position: absolute;
+  top: 15px;
+  right: 21px;
+  border: 1px solid #f47949;
+  color: #b74326;
+  font-size: 35px;
+  padding: 0 1%; }
+
+.nav {
+  background-color: #3a3a3a; }
+
+.main-content {
+  background-image: url('../assets/bg.jpg'); }
+
+.footer {
+  background-color: #3a3a3a; }
