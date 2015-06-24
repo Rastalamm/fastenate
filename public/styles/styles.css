@@ -1,3 +1,7 @@
+/*
+font-family: 'Lato', sans-serif;
+font-family: 'Oswald', sans-serif;
+*/
 body {
   margin: 0; }
 
@@ -50,6 +54,8 @@ h1 {
         border-radius: 100%;
         box-sizing: border-box;
         top: -2px; }
+      .nav ul li:last-child:hover {
+        color: #EF5B34; }
 
 .main-content {
   background-image: url('../assets/bg.jpg');
@@ -73,3 +79,5 @@ h1 {
       height: 24px;
       width: 24px;
       display: inline-block; }
+      .footer .footer-sm .instagram-icon:hover {
+        background-image: url(../assets/instagram_orange.svg); }

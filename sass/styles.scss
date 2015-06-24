@@ -1,3 +1,10 @@
+//Fonts
+/*
+font-family: 'Lato', sans-serif;
+font-family: 'Oswald', sans-serif;
+*/
+
+
 //Variables
 $white: #ffffff;
 $light: #717275;
@@ -5,6 +12,7 @@ $dark: #3a3a3a;
 $nav-font: #818285;
 $plus: #000000;
 $plus-square: #f47949;
+$hover: #EF5B34;
 
 body{
   margin: 0;
@@ -77,6 +85,12 @@ h1{
         top: -2px;
       }
 
+      &:last-child{
+        &:hover{
+          color: $hover;
+        }
+      }
+
     }
   }
 
@@ -86,6 +100,8 @@ h1{
 .main-content{
   background-image: url('../assets/bg.jpg');
   border: 1px solid transparent;
+
+
 }
 
 .footer{
@@ -99,8 +115,6 @@ h1{
     margin: auto;
     .fb-icon{
       background-image: url(../assets/facebook_grey.svg);
-      // background-repeat no-repeat;
-      // background-position: center;
       height: 24px;
       width: 24px;
       display: inline-block;
@@ -108,12 +122,15 @@ h1{
 
     .instagram-icon{
       background-image: url(../assets/instagram_grey.svg);
-      // background-repeat no-repeat;
-      // background-position: center;
       height: 24px;
       width: 24px;
       display: inline-block;
+
+      &:hover{
+        background-image: url(../assets/instagram_orange.svg);
+      }
     }
+
 
   }
 
