@@ -61,12 +61,10 @@ h1 {
   font-family: 'Oswald', sans-serif; }
 
 a {
-  text-decoration: none; }
-
-a:visited {
+  text-decoration: none;
   color: #717275; }
 
-a:hover {
+a:visited {
   color: #717275; }
 
 .header {
@@ -100,7 +98,7 @@ a:hover {
   background-color: #3a3a3a;
   height: 44px;
   margin: 0;
-  color: #717275; }
+  color: #818285; }
   .nav ul {
     margin: 0 auto;
     width: 332px; }
@@ -116,6 +114,8 @@ a:hover {
       display: inline-block;
       line-height: 44px;
       font-family: 'Lato', sans-serif; }
+      .nav ul li:last-child a:hover {
+        color: #EF5B34; }
       @media only screen and (min-width: 751px) {
         .nav ul li:first-child:before {
           display: none; }
@@ -129,9 +129,7 @@ a:hover {
           margin: 0 12px;
           border-radius: 100%;
           box-sizing: border-box;
-          top: -2px; }
-        .nav ul li:last-child:hover {
-          color: #EF5B34; } }
+          top: -2px; } }
       @media only screen and (max-width: 750px) {
         .nav ul li {
           padding: 0 5%;

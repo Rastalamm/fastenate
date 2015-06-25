@@ -29,15 +29,13 @@ h1{
 
 a{
   text-decoration: none;
+  color: $light;
 }
 
 a:visited{
   color: $light;
 }
 
-a:hover{
-  color: $light;
-}
 
 .header{
   background-color: $white;
@@ -77,7 +75,7 @@ a:hover{
   background-color: $dark;
   height: 44px;
   margin: 0;
-  color: $light;
+  color: $nav-font;
 
   ul{
     margin: 0 auto;
@@ -100,6 +98,13 @@ a:hover{
       line-height: 44px;
       font-family: 'Lato', sans-serif;
 
+        &:last-child{
+          a:hover{
+            color: $hover;
+          }
+        }
+
+
       @media #{$mediumup}{
         &:first-child{
           &:before{
@@ -118,12 +123,6 @@ a:hover{
           border-radius: 100%;
           box-sizing:border-box;
           top: -2px;
-        }
-
-        &:last-child{
-          &:hover{
-            color: $hover;
-          }
         }
       }
 
@@ -172,7 +171,7 @@ a:hover{
         width: 275px;
         height: 170px;
         margin: 16px auto;
-          box-sizing: border-box;
+        box-sizing: border-box;
       }
 
       h1{
