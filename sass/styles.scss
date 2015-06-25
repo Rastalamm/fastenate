@@ -1,13 +1,7 @@
-@import 'partials/_clearfix';
-@import 'partials/_reset';
+@import 'partials/clearfix';
+@import 'partials/reset';
 
 
-
-//Fonts
-/*
-font-family: 'Lato', sans-serif;
-font-family: 'Oswald', sans-serif;
-*/
 
 
 //Variables
@@ -15,9 +9,17 @@ $white: #ffffff;
 $light: #717275;
 $dark: #3a3a3a;
 $nav-font: #818285;
-$plus: #000000;
+$plus: #B5442C;
 $plus-square: #f47949;
 $hover: #EF5B34;
+
+
+//medium --- 501 <-> 775
+//Small -- < 500 a below
+//Media Query Ranges
+$small: "only screen and (max-width: 750px)";
+$mediumup: "only screen and (min-width: 751px)";
+$hidefooter: "only screen and (max-width: 1000px)";
 
 body{
   margin: 0;
@@ -31,6 +33,17 @@ h1{
   font-family: 'Oswald', sans-serif
 }
 
+a{
+  text-decoration: none;
+}
+
+a:visited{
+  color: $light;
+}
+
+a:hover{
+  color: $light;
+}
 
 .header{
   background-color: $white;
@@ -42,6 +55,12 @@ h1{
     background-repeat: no-repeat;
     text-align: center;
     margin-top: 14px;
+
+    @media #{$small}{
+      float: left;
+      margin: 2px 8px;
+    }
+
   }
 
   .add-article{
@@ -52,6 +71,12 @@ h1{
     color: $plus;
     font-size: 35px;
     padding: 0 1%;
+
+    @media #{$small}{
+      font-size: 40px;
+      padding: 0 2%;
+      line-height: 37px;
+    }
   }
 
 }
@@ -67,36 +92,57 @@ h1{
     margin: 0 auto;
     width: 332px;
 
+    @media #{$small}{
+      width: 100%;
+    }
+
+    #mid-nav{
+      @media #{$small}{
+        border-right: 1px solid $light;
+        border-left: 1px solid $light;
+      }
+    }
+
     li{
       list-style: none;
       display: inline-block;
       line-height: 44px;
+      font-family: 'Lato', sans-serif;
 
-      &:first-child{
+      @media #{$mediumup}{
+        &:first-child{
+          &:before{
+            display: none;
+          }
+        }
+
         &:before{
-          display: none;
+          content: " ";
+          width: 5px;
+          height: 5px;
+          display: inline-block;
+          background-color: #888;
+          position: relative;
+          margin: 0 12px;
+          border-radius: 100%;
+          box-sizing:border-box;
+          top: -2px;
+        }
+
+        &:last-child{
+          &:hover{
+            color: $hover;
+          }
         }
       }
 
-      &:before{
-        content: " ";
-        width: 5px;
-        height: 5px;
-        display: inline-block;
-        background-color: #888;
-        position: relative;
-        margin: 0 12px;
-        border-radius: 100%;
-        box-sizing:border-box;
-        top: -2px;
-      }
 
-      &:last-child{
-        &:hover{
-          color: $hover;
-        }
+      @media #{$small}{
+        padding: 0 5%;
+        width: 22%;
+        text-align: center;
+        font-size: 13px;
       }
-
     }
   }
 
@@ -112,6 +158,10 @@ h1{
     margin: auto;
     padding: 20px;
 
+    @media #{$small}{
+        max-width: 343px;
+    }
+
     .article-house{
       background-color: $white;
       display: inline-block;
@@ -121,7 +171,15 @@ h1{
       padding: 5px;
       margin: 5px;
 
+      @media #{$small}{
+        display: block;
+        margin-top: 25px;
 
+        &:first-child{
+          margin-top: 0px;
+        }
+
+      }
 
       .article-pic{
         width: 275px;
@@ -139,31 +197,37 @@ h1{
         margin: 10px 0;
         padding: 0 25px;
 
+
+
         li{
           font-size: 10px;
           font-family: 'Lato', sans-serif;
           display: inline-block;
 
-          &:first-child{
-            &:before{
-              display: none;
-            }
-          }
+          @media #{$mediumup}{
 
-          &:before{
-            content: " ";
-            width: 5px;
-            height: 5px;
-            display: inline-block;
-            background-color: #888;
-            position: relative;
-            margin: 0 5px;
-            border-radius: 100%;
-            box-sizing:border-box;
-            top: -2px;
+            &:first-child{
+              &:before{
+                display: none;
+              }
+            }
+
+            &:before{
+              content: " ";
+              width: 5px;
+              height: 5px;
+              display: inline-block;
+              background-color: #888;
+              position: relative;
+              margin: 0 12px;
+              border-radius: 100%;
+              box-sizing:border-box;
+              top: -2px;
+            }
           }
         }
       }
+    }
 
 
       p{
@@ -174,17 +238,24 @@ h1{
       }
 
     }
-
-
   }
 
-}
+
+
+
 
 .footer{
   background-color: $dark;
   height: 44px;
   margin: 0;
   padding-top: 10px;
+
+  @media #{$hidefooter}{
+
+      display: none;
+
+
+  }
 
   .footer-sm{
     width: 55px;
