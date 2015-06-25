@@ -1,9 +1,6 @@
 @import 'partials/clearfix';
 @import 'partials/reset';
 
-
-
-
 //Variables
 $white: #ffffff;
 $light: #717275;
@@ -13,9 +10,6 @@ $plus: #B5442C;
 $plus-square: #f47949;
 $hover: #EF5B34;
 
-
-//medium --- 501 <-> 775
-//Small -- < 500 a below
 //Media Query Ranges
 $small: "only screen and (max-width: 750px)";
 $mediumup: "only screen and (min-width: 751px)";
@@ -60,7 +54,6 @@ a:hover{
       float: left;
       margin: 2px 8px;
     }
-
   }
 
   .add-article{
@@ -78,9 +71,7 @@ a:hover{
       line-height: 37px;
     }
   }
-
 }
-
 
 .nav{
   background-color: $dark;
@@ -136,7 +127,6 @@ a:hover{
         }
       }
 
-
       @media #{$small}{
         padding: 0 5%;
         width: 22%;
@@ -145,8 +135,6 @@ a:hover{
       }
     }
   }
-
-
 }
 
 .main-content{
@@ -168,8 +156,8 @@ a:hover{
       width: 325px;
       vertical-align: top;
       height: 400px;
-      padding: 5px;
-      margin: 5px;
+      padding: 2px;
+      margin: 9px;
 
       @media #{$small}{
         display: block;
@@ -178,7 +166,6 @@ a:hover{
         &:first-child{
           margin-top: 0px;
         }
-
       }
 
       .article-pic{
@@ -196,8 +183,6 @@ a:hover{
       ul{
         margin: 10px 0;
         padding: 0 25px;
-
-
 
         li{
           font-size: 10px;
@@ -229,20 +214,14 @@ a:hover{
       }
     }
 
-
-      p{
-        padding: 0 25px 10px 25px;
-        font-family: 'Lato', sans-serif;
-        font-size: 16px;
-        line-height: 20px;
-      }
-
+    p{
+      padding: 0 25px 10px 25px;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      line-height: 20px;
     }
   }
-
-
-
-
+}
 
 .footer{
   background-color: $dark;
@@ -251,15 +230,13 @@ a:hover{
   padding-top: 10px;
 
   @media #{$hidefooter}{
-
-      display: none;
-
-
+    display: none;
   }
 
   .footer-sm{
     width: 55px;
     margin: 5px auto;
+
     .fb-icon{
       background-image: url(../assets/facebook_grey.svg);
       height: 24px;
@@ -277,8 +254,5 @@ a:hover{
         background-image: url(../assets/instagram_orange.svg);
       }
     }
-
-
   }
-
 }

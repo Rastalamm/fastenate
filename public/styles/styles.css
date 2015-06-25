@@ -155,8 +155,8 @@ a:hover {
       width: 325px;
       vertical-align: top;
       height: 400px;
-      padding: 5px;
-      margin: 5px; }
+      padding: 2px;
+      margin: 9px; }
       @media only screen and (max-width: 750px) {
         .main-content .content-house .article-house {
           display: block;
