@@ -1,26 +1,12 @@
 window.onload = function(){
 
-  var contentHouse = document.getElementsByTagName('content-house')
-
-  var articleHouse = document.createElement('div');
-  articleHouse.setAttribute('class', 'article-house');
-  contentHouse.appendChild(articleHouse);
-
-
-
-  var imageDiv = document.createElement('div');
-  imageDiv.setAttribute('class', 'article-pic');
-  imageDiv.style.backgroundImage = GRABFROMOBJ;
-  imageDiv.style.backgroundSize = 'cover';
-
-  var image
-
-
-
-
-
-
-
+  var contentHouse = document.querySelector('.content-house')
+  var dataPermalink;
+  var image;
+  var title;
+  var author;
+  var views;
+  var creation;
   var HTTP_UNSENT = 0;
   var HTTP_OPENED = 1;
   var HTTP_HEADERS_RECV = 2;
@@ -32,6 +18,30 @@ window.onload = function(){
   var HTTP_GET = 'GET';
   var httpRequest;
 
+  var myBoardsClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/my_boards.json', true);
+    httpRequest.send(null);
+  }
+
+  var randomClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/random.json', true);
+    httpRequest.send(null);
+  }
+
+  var getTheAppClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/get_the_app.json', true);
+    httpRequest.send(null);
+  }
+
+
+  document.querySelector('#random-nav').addEventListener('click', myBoardsClick);
+  document.querySelector('#my-boards-nav').addEventListener('click', randomClick);
+  document.querySelector('#get-the-app').addEventListener('click', getTheAppClick);
+
+
   if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
       httpRequest = new XMLHttpRequest();
   } else if (window.ActiveXObject) { // IE 6 and older
@@ -41,36 +51,77 @@ window.onload = function(){
   httpRequest.open('GET', '../api/my_boards.json', true);
   httpRequest.send(null);
 
+
   httpRequest.onreadystatechange = function(){
-      if (httpRequest.readyState === HTTP_DONE) {
-        if (httpRequest.status === HTTP_STATUS_OK) {
-          var res = JSON.parse(httpRequest.responseText);
-          updateUI(res);
-          console.log('res', res);
-        } else {
-          throw new Error('There was a problem with the request.');
-        }
+    if (httpRequest.readyState === HTTP_DONE) {
+      if (httpRequest.status === HTTP_STATUS_OK) {
+        var res = JSON.parse(httpRequest.responseText);
+
+        for (var i = 0; i < res.data.children.length; i++) {
+
+          dataPermalink = res.data.children[i].data.permalink;
+          image = res.data.children[i].data.url;
+          title = res.data.children[i].data.title;
+          author = res.data.children[i].data.author;
+          creation = res.data.children[i].data.created_utc;
+          views = res.data.children[i].data.score;
+
+          dataGrabCreate(dataPermalink, image, title, author, creation, views)
+        };
+
+        console.log('res', res);
+      } else {
+        throw new Error('There was a problem with the request.');
       }
+    }
   }
 
-  function updateUI (pretendJson){
-    var imageID;
-    var imagey;
+  function dataGrabCreate(dataPermalink, image, dataTitle, author, creation, views){
 
-    for(var i = 0; i < 4; i++){
-      imageID = document.getElementById('image' + i);
-      console.log('here', imageID);
+    var linkOut = document.createElement('a');
+    linkOut.setAttribute('href', 'http://www.reddit.com' + dataPermalink );
+    linkOut.setAttribute('target', '_blank' + dataPermalink );
+    contentHouse.appendChild(linkOut);
 
-      imagey = pretendJson.data.children[i].data.url;
-      imageID.style.backgroundImage = "url('" + imagey + "')";
+    var articleHouse = document.createElement('div');
+    articleHouse.setAttribute('class', 'article-house');
+    linkOut.appendChild(articleHouse);
 
+    var articlePic = document.createElement('div');
+    articlePic.setAttribute('class', 'article-pic');
+    articlePic.style.backgroundImage = image;
+    articlePic.style.backgroundSize = 'cover';
+    articleHouse.appendChild(articlePic);
 
-  console.log(pretendJson.data.children[0].data.url);
-    }
+    var articlePicImage = document.createElement('img');
+    articlePicImage.setAttribute('src', image);
+    articlePicImage.setAttribute('opacity', '0');
+    articlePicImage.setAttribute('width', '275px');
+    articlePicImage.setAttribute('height', '170px');
+    articlePic.appendChild(articlePicImage)
 
+    var title = document.createElement('h1');
+    title.innerHTML = dataTitle;
+    articleHouse.appendChild(title);
 
+    var ulListStart = document.createElement('ul');
+    articleHouse.appendChild(ulListStart);
 
+    var authorList = document.createElement('li');
+    authorList.innerHTML = author;
+    ulListStart.appendChild(authorList);
 
+    var ageList = document.createElement('li');
+    ageList.innerHTML = moment(creation, "DD").fromNow();
+    ulListStart.appendChild(ageList);
+
+    var viewsList = document.createElement('li');
+    viewsList.innerHTML = (views + ' views');
+    ulListStart.appendChild(viewsList);
+
+    var description = document.createElement('p');
+    description.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ipsam, facilis suscipit maiores nostrum pariatur.'
+    articleHouse.appendChild(description);
   }
 }
 
