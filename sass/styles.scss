@@ -188,7 +188,7 @@ a:visited{
           font-family: 'Lato', sans-serif;
           display: inline-block;
 
-          @media #{$mediumup}{
+          @media #{$small}{
 
             &:first-child{
               &:before{
