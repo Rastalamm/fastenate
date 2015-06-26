@@ -1,4 +1,4 @@
-window.onload = function(){
+var dataPull = (function(){
 
   var contentHouse = document.querySelector('.content-house')
   var dataPermalink;
@@ -18,39 +18,15 @@ window.onload = function(){
   var HTTP_GET = 'GET';
   var httpRequest;
 
-  var myBoardsClick = function (){
-    contentHouse.innerHTML = "";
-    httpRequest.open('GET', '../api/my_boards.json', true);
-    httpRequest.send(null);
-  }
-
-  var randomClick = function (){
-    contentHouse.innerHTML = "";
-    httpRequest.open('GET', '../api/random.json', true);
-    httpRequest.send(null);
-  }
-
-  var getTheAppClick = function (){
-    contentHouse.innerHTML = "";
-    httpRequest.open('GET', '../api/get_the_app.json', true);
-    httpRequest.send(null);
-  }
-
-
-  document.querySelector('#random-nav').addEventListener('click', myBoardsClick);
-  document.querySelector('#my-boards-nav').addEventListener('click', randomClick);
-  document.querySelector('#get-the-app').addEventListener('click', getTheAppClick);
-
-
+//AJAX requests
   if (window.XMLHttpRequest) { // Mozilla, Safari, IE7+ ...
-      httpRequest = new XMLHttpRequest();
+    httpRequest = new XMLHttpRequest();
   } else if (window.ActiveXObject) { // IE 6 and older
-      httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
   }
 
   httpRequest.open('GET', '../api/my_boards.json', true);
   httpRequest.send(null);
-
 
   httpRequest.onreadystatechange = function(){
     if (httpRequest.readyState === HTTP_DONE) {
@@ -69,13 +45,13 @@ window.onload = function(){
           dataGrabCreate(dataPermalink, image, title, author, creation, views)
         };
 
-        console.log('res', res);
       } else {
         throw new Error('There was a problem with the request.');
       }
     }
   }
 
+//Function to populate the board
   function dataGrabCreate(dataPermalink, image, dataTitle, author, creation, views){
 
     var linkOut = document.createElement('a');
@@ -123,5 +99,34 @@ window.onload = function(){
     description.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ipsam, facilis suscipit maiores nostrum pariatur.'
     articleHouse.appendChild(description);
   }
-}
 
+//Click functions
+  var myBoardsClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/my_boards.json', true);
+    httpRequest.send(null);
+  }
+
+  var randomClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/random.json', true);
+    httpRequest.send(null);
+  }
+
+  var getTheAppClick = function (){
+    contentHouse.innerHTML = "";
+    httpRequest.open('GET', '../api/get_the_app.json', true);
+    httpRequest.send(null);
+  }
+
+  document.querySelector('#random-nav').addEventListener('click', myBoardsClick);
+  document.querySelector('#my-boards-nav').addEventListener('click', randomClick);
+  document.querySelector('#get-the-app').addEventListener('click', getTheAppClick);
+
+  return {
+    myBoardsClick : myBoardsClick,
+    randomClick : randomClick,
+    getTheAppClick : getTheAppClick
+  }
+
+})();
